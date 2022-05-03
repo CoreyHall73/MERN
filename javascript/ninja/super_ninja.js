@@ -1,35 +1,33 @@
 class Ninja {
-    constructor(name, health=10, speed, strength){
+    constructor(name, health=10, speed=3, strength=3){
         this.name = name;
         this.health = health;
-        this.speed = 3;
-        this.strength = 3;
+        this.speed = speed;
+        this.strength = strength;
     }
 
-    sayName(name) {
+    sayName() {
         console.log(`I am ${this.name}`);
-        return this;
     }
 
-    showStats(name, strength, speed, health) {
+    showStats() {
         console.log(`Name: ${this.name}, Health: ${this.health}, Speed: ${this.speed}, Strength: ${this.strength}`);
-        return this;
     }
 
     drinkSake() {
         this.health += 10;
-        return this;
+        return this.health;
     }
 }
 
 class Sensei extends Ninja {
-    constructor(wisdom) {
-        super(name, health=200, speed=10, strength=10)
-        this.wisdom = 100;
+    constructor(name, wisdom=100) {
+        super(name, 200, 10, 10)
+        this.wisdom = wisdom;
     }
 
     speakWisdom() {
-        this.drinkSake();
+        super.drinkSake();
         console.log("What one programmer can do in one month, two progammers can do in two months.");
     }
 }
