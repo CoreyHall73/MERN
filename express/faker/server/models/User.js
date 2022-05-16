@@ -4,7 +4,7 @@ class User {
     constructor() {
         this.id = faker.datatype.uuid();
         this.password = faker.random.alphaNumeric(8);
-
+        this.email = faker.random.alphaNumeric(8)
     }
 }
 
