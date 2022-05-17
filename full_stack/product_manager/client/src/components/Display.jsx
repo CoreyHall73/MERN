@@ -8,7 +8,7 @@ const Display = (props) => {
     const [allProducts, setAllProducts] = useState([])
 
     //destructure from props
-    const {refreshState} = props;
+    const {refreshState, refresh} = props;
 
     useEffect(() => {
 
@@ -17,6 +17,13 @@ const Display = (props) => {
     .then(res => setAllProducts(res.data)) //incoming info is set to state
     .catch(err => console.log(err))
 }, [refreshState])
+
+    const deleteHandler = (id) => {
+        axios.delete("http://localhost:8000/api/products/" + id)
+        .then(res => refresh())
+        .catch(err => console.log(err))
+    }
+
 
     return (
     <fieldset>
@@ -29,6 +36,10 @@ const Display = (props) => {
                         <Link to={"/" + product._id}>
                         <h3>{product.name} {product.price}</h3>
                         </Link>
+                        <Link to={"/"+product._id+"/edit"}>
+                            <button>Edit</button>
+                        </Link>
+                        <button onClick={(e) => deleteHandler(product._id)}>Delete</button>
                     </div>
                 )
             })

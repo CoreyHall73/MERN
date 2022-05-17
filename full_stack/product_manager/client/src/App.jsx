@@ -1,5 +1,6 @@
 import Main from "./views/main"
 import Detail from "./views/detail"
+import Edit from "./views/Edit"
 import './App.css';
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 
@@ -11,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />}/>
           <Route path="/:product_id" element={<Detail />}/>
+          <Route path="/:product_id/edit" element={<Edit />}/>
         </Routes>
     </fieldset>
     </BrowserRouter>

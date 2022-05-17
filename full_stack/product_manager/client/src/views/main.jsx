@@ -15,7 +15,7 @@ const Main = () => {
     <fieldset>
         <legend>MainView.jsx</legend>
         <Form refresh={refresh} />
-        <Display refreshState={refreshState} />
+        <Display refresh={refresh} refreshState={refreshState} />
     </fieldset>
     )
 }

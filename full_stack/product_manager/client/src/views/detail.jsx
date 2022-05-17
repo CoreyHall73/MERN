@@ -1,8 +1,10 @@
 import axios from 'axios'
 import React, {useEffect, useState} from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 
 const Detail = (props) => {
+    // For navigate
+    const navigate = useNavigate()
 
     //state for holding one
     const [product, setProduct] = useState()
@@ -15,6 +17,12 @@ const Detail = (props) => {
         .catch(err => console.log(err))
     }, [])
 
+    const deleteHandler = (id) => {
+        axios.delete("http://localhost:8000/api/products/" + id)
+        .then(res => navigate('/'))
+        .catch(err => console.log(err))
+    }
+
     return (
     <fieldset>
         <legend>DetailView.jsx</legend>
@@ -24,6 +32,10 @@ const Detail = (props) => {
             <h1>Name: {product.name}</h1>
             <h2>Price: {product.price}</h2>
             <h2>Description: {product.description}</h2>
+            <Link to={"/"+product._id+"/edit"} >
+            <button>Edit</button>
+            </Link>
+            <button onClick={(e) => deleteHandler(product._id)}>Delete</button>
         </div>
         }
     </fieldset>
