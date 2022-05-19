@@ -1,6 +1,8 @@
 // import dependencies
 const mongoose = require("mongoose")
 
+
+//create schema
 const ProductSchema = mongoose.Schema({
     name:{
         type:String
@@ -13,4 +15,6 @@ const ProductSchema = mongoose.Schema({
     }
 }, {timestamps:true})
 
+
+// register schema in mongoo
 module.exports.Product = mongoose.model("Product", ProductSchema)
